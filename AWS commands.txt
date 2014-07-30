@@ -1,0 +1,20 @@
+AWS commands
+
+AWS UM Training April 2014
+http://www.awsps.com/training/michigan/essentials/
+http://www.ec2instances.info/
+
+
+# logging into AWS EC2 instances. Using Rstudio AMI 
+ssh -i ~/.ssh/amazon-aws.pem ubuntu@23.23.19.43
+
+# copying files to and from EC2
+scp -i ~/.ssh/amazon-aws.pem ubuntu@23.23.19.43:*.csv .
+scp -i ~/.ssh/amazon-aws.pem Raws.tgz ubuntu@ec2-54-87-160-47.compute-1.amazonaws.com:~
+
+# running R script in the background with logs
+# This redirects the standard out to a file ~/R/logs/foo.out as well as place all standard error there as well. that is what: 2>&1 is doing.
+nohup Rscript --verbose Perm_Recode_aws_perm10k.R > test.out 2>&1 &
+
+# or use screen as a terminal multiplexer
+# https://www.digitalocean.com/community/articles/how-to-install-and-use-screen-on-an-ubuntu-cloud-server
